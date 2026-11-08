@@ -1,0 +1,121 @@
+{
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": "https://raw.githubusercontent.com/Ashwend/ashwend-server/main/pterodactyl/egg-ashwend.json"
+    },
+    "exported_at": "2026-11-08T18:30:00+00:00",
+    "name": "Ashwend",
+    "author": "1164484+danniehansen@users.noreply.github.com",
+    "description": "Dedicated server for Ashwend, a multiplayer survival game on Steam. Runs the official image. Give the server a second allocation for Steam's query port (the Steam Query Port setting, 27016 unless you change it) or it is not listed in the server browser. Guide: https://github.com/Ashwend/ashwend-server",
+    "features": null,
+    "docker_images": {
+        "Ashwend (beta)": "ghcr.io/ashwend/ashwend-server:beta"
+    },
+    "file_denylist": [],
+    "startup": "ashwend-entrypoint",
+    "config": {
+        "files": "{}",
+        "startup": "{\"done\": \"Lightyear game server listening on\"}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n# The Ashwend server ships inside the ghcr.io/ashwend/ashwend-server image, so\n# there is nothing to download. The world, the ban list and the logs are\n# written to this server's folder on first start.\nmkdir -p /mnt/server\necho \"Nothing to install: the Ashwend server ships in its image.\"\n",
+            "container": "ghcr.io/pterodactyl/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in the server browser.",
+            "env_variable": "ASHWEND_SERVER_NAME",
+            "default_value": "Ashwend Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Admins",
+            "description": "Comma-separated SteamID64s allowed to use the in-game admin panel (the 17-digit number starting 7656119 on a Steam profile). Read at start.",
+            "env_variable": "ASHWEND_ADMINS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|regex:/^[0-9]{17}(,[0-9]{17})*$/",
+            "field_type": "text"
+        },
+        {
+            "name": "Max Players",
+            "description": "The most players online at once. Admins bypass it. 0 means no limit.",
+            "env_variable": "ASHWEND_MAX_PLAYERS",
+            "default_value": "50",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:0,1000",
+            "field_type": "text"
+        },
+        {
+            "name": "Steam Query Port",
+            "description": "Steam's server browser queries the server on this UDP port. Add it to the server as a second allocation with the same number, or the server is not listed.",
+            "env_variable": "ASHWEND_QUERY_PORT",
+            "default_value": "27016",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1024,65535",
+            "field_type": "text"
+        },
+        {
+            "name": "VAC",
+            "description": "1 runs with Valve Anti-Cheat, 0 without. Steam tickets and game ownership are checked either way.",
+            "env_variable": "ASHWEND_VAC",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Server Login Token",
+            "description": "Optional. Ties the server to a Steam account that owns the game (steamcommunity.com/dev/managegameservers, app ID 4985910). Not needed to be listed.",
+            "env_variable": "ASHWEND_GSLT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "World Seed",
+            "description": "The seed of a new world. Empty picks one at random. Has no effect on a world that already exists.",
+            "env_variable": "ASHWEND_SEED",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "Wipe Cycle Days",
+            "description": "How many days of running time a new world lasts before it ends and a new one begins. Empty means 30, or the existing world's length. Changing it for an existing world stops the server from starting: start a new world instead.",
+            "env_variable": "ASHWEND_WIPE_DAYS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|numeric|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "Weather Feed",
+            "description": "on follows real-world forecast data from NOAA for the planet's weather; off runs it on its own generated climate.",
+            "env_variable": "ASHWEND_WEATHER_FEED",
+            "default_value": "on",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:on,off",
+            "field_type": "text"
+        }
+    ]
+}

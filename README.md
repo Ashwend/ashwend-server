@@ -16,7 +16,8 @@ published.
 
 ## What you need
 
-- **A Linux x86-64 machine with Docker.** ARM machines (a Raspberry Pi,
+- **A Linux x86-64 machine with Docker**, or a game panel (see
+  [Game panels](#game-panels-pterodactyl-pelican)). ARM machines (a Raspberry Pi,
   Hetzner's CAX line, AWS Graviton) cannot run it: Steam's server library
   exists for x86-64 only.
 - **Two UDP ports reachable from the internet: 7777 and 27016.** See
@@ -48,6 +49,24 @@ with `docker logs -f ashwend` (or `docker compose logs -f`). When it prints
 Your SteamID64 is the 17-digit number starting `7656119` on your Steam profile
 page. Putting it in `ASHWEND_ADMINS` gives you the in-game admin panel (see
 [Administration](docs/administration.md)).
+
+## Game panels (Pterodactyl, Pelican)
+
+Hosts running Pterodactyl, Pelican or a panel built on them can use the egg in
+[`pterodactyl/egg-ashwend.json`](pterodactyl/egg-ashwend.json). Import it in the
+panel's admin area (Eggs, Import), either by uploading the file or from this
+link:
+
+```
+https://raw.githubusercontent.com/Ashwend/ashwend-server/main/pterodactyl/egg-ashwend.json
+```
+
+Then create a server with the Ashwend egg and give it **two allocations**: the
+primary one is the game port players connect to, and the second is Steam's query
+port. Set the server's **Steam Query Port** setting to the second allocation's
+number, or the server runs but is not listed. Everything else (name, admins,
+player limit) is in the server's settings, and the world, the ban list and the
+logs are in the server's files.
 
 ## Choosing a version
 
