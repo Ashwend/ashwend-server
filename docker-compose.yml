@@ -1,0 +1,45 @@
+# Ashwend dedicated server.
+#
+# Put this file in an empty folder, set ASHWEND_SERVER_NAME and ASHWEND_ADMINS,
+# then run `docker compose up -d`. The world and the ban list are written to
+# ./data next to this file. Full guide: README.md.
+
+services:
+  ashwend:
+    # The server admits only players on exactly its own version, so run the tag
+    # your players' Steam branch is on. `beta` follows Steam's beta branch,
+    # `latest` the default branch once the game is released, and a version
+    # (`0.29.0-beta.1`) pins one build. Until the release, the default branch
+    # carries the beta too, so `beta` is the one to run.
+    image: ghcr.io/ashwend/ashwend-server:beta
+    container_name: ashwend
+    restart: unless-stopped
+    # Time to save the world on `docker compose stop` / `down` before the
+    # container is killed. Docker's default is ten seconds, and a large world
+    # can take longer.
+    stop_grace_period: 30s
+    # Both ports are UDP. 7777 is what players connect to; 27016 is how Steam's
+    # server browser queries you. Forward BOTH on your router or the server runs
+    # but never appears in the list.
+    ports:
+      - "7777:7777/udp"
+      - "27016:27016/udp"
+    environment:
+      # Shown in the Steam server browser.
+      ASHWEND_SERVER_NAME: "My Ashwend Server"
+      # Comma-separated SteamID64s who can use the in-game admin panel. Find
+      # yours on your Steam profile page (the 17-digit number starting 7656119).
+      # Read once at boot: restart the container to change it.
+      ASHWEND_ADMINS: ""
+      # Enforced, and shown in the browser. Admins bypass it, and a player who
+      # already has a body in this world can always come back to it.
+      ASHWEND_MAX_PLAYERS: "50"
+      # Uncomment to run without VAC (tickets and game ownership are still
+      # checked; only the anti-cheat layer is dropped).
+      # ASHWEND_VAC: "0"
+      # Optional: ties this server to a Steam account that owns the game.
+      # Anonymous logon (the default) already lists fine.
+      # ASHWEND_GSLT: "your-token-here"
+    volumes:
+      # Holds world.save, bans.json and moderation.log. Back this up.
+      - ./data:/data
