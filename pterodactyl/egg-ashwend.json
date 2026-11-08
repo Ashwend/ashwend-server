@@ -5,7 +5,7 @@
     },
     "exported_at": "2026-11-08T18:30:00+00:00",
     "name": "Ashwend",
-    "author": "1164484+danniehansen@users.noreply.github.com",
+    "author": "dannie@birkhansen.tech",
     "description": "Dedicated server for Ashwend, a multiplayer survival game on Steam. Runs the official image. Give the server a second allocation for Steam's query port (the Steam Query Port setting, 27016 unless you change it) or it is not listed in the server browser. Guide: https://github.com/Ashwend/ashwend-server",
     "features": null,
     "docker_images": {
