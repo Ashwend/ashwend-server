@@ -3,10 +3,10 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/Ashwend/ashwend-server/main/pterodactyl/egg-ashwend.json"
     },
-    "exported_at": "2026-11-08T18:30:00+00:00",
+    "exported_at": "2026-11-08T20:30:00+00:00",
     "name": "Ashwend",
     "author": "dannie@birkhansen.tech",
-    "description": "Dedicated server for Ashwend, a multiplayer survival game on Steam. Runs the official image. Give the server a second allocation for Steam's query port (the Steam Query Port setting, 27016 unless you change it) or it is not listed in the server browser. Guide: https://github.com/Ashwend/ashwend-server",
+    "description": "Dedicated server for Ashwend, a multiplayer survival game on Steam. Runs the official image and needs two UDP ports: the primary allocation is the game port, and a second allocation is Steam's query port. Set Steam Query Port to the second allocation's number; on a shared IP, 27016 is rarely this server's own. Without it the server runs but is not listed. Guide: https://github.com/Ashwend/ashwend-server/blob/main/docs/game-panels.md",
     "features": null,
     "docker_images": {
         "Ashwend (beta)": "ghcr.io/ashwend/ashwend-server:beta"
@@ -59,7 +59,7 @@
         },
         {
             "name": "Steam Query Port",
-            "description": "Steam's server browser queries the server on this UDP port. Add it to the server as a second allocation with the same number, or the server is not listed.",
+            "description": "Steam's server browser queries the server on this UDP port. It must be one of this server's own allocations: add a second port (allocation) to the server and enter its number here. The default 27016 only works if 27016 is allocated to this server.",
             "env_variable": "ASHWEND_QUERY_PORT",
             "default_value": "27016",
             "user_viewable": true,

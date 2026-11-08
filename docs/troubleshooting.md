@@ -7,6 +7,9 @@ Start with the log: `docker logs ashwend` (or `docker compose logs`).
 - **UDP 27016 is not reachable.** Steam finds and lists servers through this
   port. Forward it as well as 7777, both UDP. A server reachable on 7777 alone
   works through Direct connect but is never listed.
+- **On a game panel, the query port is not one of the server's allocations.**
+  A panel only lets allocated ports through. Add a second port to the server and
+  set Steam Query Port to its number ([Game panels](game-panels.md)).
 - **The ports were remapped.** The server tells Steam the ports it listens on,
   so `-p 7778:7777/udp`-style mappings send players to the wrong place. Publish
   the same numbers on both sides (see [Configuration](configuration.md)).

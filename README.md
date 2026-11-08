@@ -64,9 +64,10 @@ https://raw.githubusercontent.com/Ashwend/ashwend-server/main/pterodactyl/egg-as
 Then create a server with the Ashwend egg and give it **two allocations**: the
 primary one is the game port players connect to, and the second is Steam's query
 port. Set the server's **Steam Query Port** setting to the second allocation's
-number, or the server runs but is not listed. Everything else (name, admins,
-player limit) is in the server's settings, and the world, the ban list and the
-logs are in the server's files.
+number, or the server runs but is not listed. On a shared IP address this is
+always needed, since 27016 is rarely yours: see
+[Game panels and shared IP addresses](docs/game-panels.md), which also covers
+what hosting providers can set up for their customers.
 
 ## Choosing a version
 
@@ -97,7 +98,9 @@ Both ports are UDP, and both need to reach the server:
 
 Forwarding only 7777 gives you a server that works for anyone who types your
 address into **Direct connect**, but never appears in the server list, because
-Steam cannot query it. That is the most common setup mistake.
+Steam cannot query it. That is the most common setup mistake. On a game panel or
+a shared IP, the query port is a second port allocated to your server rather
+than 27016 ([Game panels](docs/game-panels.md)).
 
 ## Updating
 
@@ -132,5 +135,7 @@ the moderation log. Back up that folder and you have backed up the server.
   `data`.
 - [The wipe cycle](docs/wipe-cycle.md): every world ends after 30 days and a new
   one begins.
+- [Game panels and shared IP addresses](docs/game-panels.md): the second port a
+  panel server needs, for renters and for hosting providers.
 - [Troubleshooting](docs/troubleshooting.md): a server missing from the list,
   players turned away, what the server connects to.

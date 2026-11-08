@@ -17,7 +17,7 @@ recreate the container for it to take effect.
 | `ASHWEND_AUTH` | `steam` | `no-auth` turns off Steam sign-in checks entirely. For a private LAN only, see below. |
 | `ASHWEND_ALLOW_UNAUTHENTICATED_LAN` | `0` | `1` lets a `no-auth` server listen on all addresses. See below. |
 | `ASHWEND_BIND` | `0.0.0.0:7777` | The game's UDP address and port inside the container. |
-| `ASHWEND_QUERY_PORT` | `27016` | Steam's browser query port inside the container. |
+| `ASHWEND_QUERY_PORT` | `27016` | Steam's browser query port inside the container. On a game panel, a second port allocated to the server ([Game panels](game-panels.md)). |
 | `ASHWEND_WORLD` | `/data/world.save` | Where the world is saved. |
 | `ASHWEND_BANS_FILE` | `/data/bans.json` | The ban list. |
 | `ASHWEND_AUDIT_LOG` | `/data/moderation.log` | The moderation log. |
