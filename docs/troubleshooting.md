@@ -28,6 +28,11 @@ A server admits only players on exactly its own version. If the browser shows
 - After an update, Steam may take a while to reach every player. Pull the new
   image when your players have the new version.
 
+## The server lags when it is busy
+
+See [Running a busy server](performance.md): how to tell whether the machine
+or its settings are the limit, and what to change.
+
 ## The server stops right after starting
 
 - **`Failed to load module '~/.steam/sdkarm64/steamclient.so'`**: the machine is

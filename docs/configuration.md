@@ -21,6 +21,7 @@ recreate the container for it to take effect.
 | `ASHWEND_WORLD` | `/data/world.save` | Where the world is saved. |
 | `ASHWEND_BANS_FILE` | `/data/bans.json` | The ban list. |
 | `ASHWEND_AUDIT_LOG` | `/data/moderation.log` | The moderation log. |
+| `ASHWEND_SERVER_STATS` | unset | A number of seconds: the server prints a line that often saying how hard it is working. See [Running a busy server](performance.md). |
 
 The server tells Steam the ports it listens on, so the ports you publish with
 `-p` have to be the same numbers on both sides. To run a second server on the

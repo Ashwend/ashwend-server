@@ -24,8 +24,12 @@ published.
   [Ports](#ports).
 - **Outbound internet access**, so the server can sign in to Steam and check
   each player's ticket.
-- **Memory:** an empty server uses about 250 MB. Leave room on top for players
-  and what they build.
+- **Memory:** an empty server uses about 250 MB, and each player online adds
+  about 3.5 MB on top of what the world's bases take: 2 GB is enough for 100
+  players, 4 GB for 300.
+- **A fast CPU core** matters more than many of them: two cores carry a
+  server of fifty, and [Running a busy server](docs/performance.md) says what
+  a hundred players or more need, from the machine and from its settings.
 
 ## Quick start
 
@@ -137,5 +141,8 @@ the moderation log. Back up that folder and you have backed up the server.
   one begins.
 - [Game panels and shared IP addresses](docs/game-panels.md): the second port a
   panel server needs, for renters and for hosting providers.
+- [Running a busy server](docs/performance.md): choosing the machine, the
+  system settings that matter with a hundred players or more, and how to tell
+  whether the server is keeping up.
 - [Troubleshooting](docs/troubleshooting.md): a server missing from the list,
   players turned away, what the server connects to.
