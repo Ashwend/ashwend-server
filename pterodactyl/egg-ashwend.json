@@ -106,16 +106,6 @@
             "user_editable": true,
             "rules": "nullable|numeric|min:1",
             "field_type": "text"
-        },
-        {
-            "name": "Weather Feed",
-            "description": "on follows real-world forecast data from NOAA for the planet's weather; off runs it on its own generated climate.",
-            "env_variable": "ASHWEND_WEATHER_FEED",
-            "default_value": "on",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|string|in:on,off",
-            "field_type": "text"
         }
     ]
 }

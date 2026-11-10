@@ -13,7 +13,6 @@ recreate the container for it to take effect.
 | `ASHWEND_WIPE_DAYS` | `30` | How many days of server running time a new world lasts. See [the wipe cycle](wipe-cycle.md). |
 | `ASHWEND_VAC` | `1` | `0` runs without VAC. Steam tickets and game ownership are still checked. |
 | `ASHWEND_GSLT` | unset | An optional Game Server Login Token. See below. |
-| `ASHWEND_WEATHER_FEED` | on | `off` stops the server fetching real-world weather data. See below. |
 | `ASHWEND_AUTH` | `steam` | `no-auth` turns off Steam sign-in checks entirely. For a private LAN only, see below. |
 | `ASHWEND_ALLOW_UNAUTHENTICATED_LAN` | `0` | `1` lets a `no-auth` server listen on all addresses. See below. |
 | `ASHWEND_BIND` | `0.0.0.0:7777` | The game's UDP address and port inside the container. |
@@ -46,11 +45,10 @@ changes. Create one at
 
 ## Weather
 
-The planet's clouds and storms follow real-world forecast data from NOAA, which
-the server downloads over HTTPS (about 800 KB every six hours from
-`nomads.ncep.noaa.gov`). It is optional: with `ASHWEND_WEATHER_FEED=off`, or
-with no route to NOAA, the world runs on its own generated climate and nothing
-else changes.
+The server decides the planet's weather itself, from the world's seed: clouds,
+rain, fog and storms drift over the planet and change every half hour or so
+wherever a player stands. It downloads nothing for it, and there is nothing
+to configure.
 
 ## `no-auth` is for a private LAN only
 

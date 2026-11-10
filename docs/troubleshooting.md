@@ -48,8 +48,6 @@ or its settings are the limit, and what to change.
 
 - **Steam**, always: to sign in, to check each player's ticket and to list the
   server.
-- **NOAA's forecast server** (`nomads.ncep.noaa.gov`), for the planet's weather.
-  Optional: `ASHWEND_WEATHER_FEED=off` stops it.
 - **A crash report to the developer.** If the server crashes, a release build
   may send one report about the crash (to PostHog, in the EU) before it exits.
   It sends nothing during normal play and no gameplay data. Set
