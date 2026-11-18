@@ -2,7 +2,8 @@
 
 Run your own server for [Ashwend](https://store.steampowered.com/app/4985910), a
 multiplayer survival game on Steam. Your server shows up in the in-game server
-browser and in Steam's, and players join it with their own copy of the game.
+browser, under Community, and in Steam's, and players join it with their own
+copy of the game.
 
 This repository holds the server's documentation and a ready-made compose file.
 The server itself ships as a container image:
